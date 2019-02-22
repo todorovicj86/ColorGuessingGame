@@ -5,8 +5,11 @@ var changeColor = document.querySelector("#guess");
 var header = document.querySelector("header")
 var message = document.querySelector("#message");
 var activeClass = document.querySelector(".active");
+var difLevel = document.querySelectorAll(".dificulty");
+var easyLevel = document.querySelector("#easy");
+var hardLevel = document.querySelector("#hard");
 var isColor = false;
-
+var isActive = false;
 
 
 for(var i = 0; i < squares.length; i++){
@@ -37,7 +40,20 @@ for(var i = 0; i < squares.length; i++){
 	});
 };
 
+//add/remove active class to level of dificulty
+difLevel.forEach(function(level){
+	level.addEventListener("click", function(){
+			this.classList.add("active");
+			if(this === easyLevel){
+				hardLevel.classList.remove("active");
+				
+			}else{
+				easyLevel.classList.remove("active");
+			}
+				
+	});
 
+});
 //function to chose random square's color
 function colorToGuess(){
 	var randomIndex = Math.floor(Math.random()*(6-0) + 0);
