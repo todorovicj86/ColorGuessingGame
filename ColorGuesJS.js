@@ -20,7 +20,7 @@ for(var i = 0; i < squares.length; i++){
 			this.style.opacity = "0";
 			message.textContent = "Try again!";
 			
-			if(squareColor === color){
+			if(squareColor === guessColor.textContent){
 				changeColor.textContent = "PLAY AGAIN?";
 				message.textContent = "Correct!";
 				header.style.backgroundColor = squareColor;
@@ -36,34 +36,38 @@ for(var i = 0; i < squares.length; i++){
 		}
 	});
 };
-var randomIndex = Math.floor(Math.random()*(6-0) + 0);
-console.log(randomIndex);
-var square = squares[randomIndex];
-var color = square.style.backgroundColor;
-console.log(color);
-guessColor.textContent = color;
 
+
+//function to chose random square's color
+function colorToGuess(){
+	var randomIndex = Math.floor(Math.random()*(6-0) + 0);
+	console.log(randomIndex);
+	var square = squares[randomIndex];
+	var color = square.style.backgroundColor;
+	return color;
+}
+
+//mathching the text and the color
+guessColor.textContent = colorToGuess();
+
+//creat the reset when clicked
 changeColor.addEventListener("click", function(){
 	reset();
-	isColor = false;
+	
 });
 
+//reset function
 function reset(){
 	changeColor.textContent = "NEW COLOR";
 	message.textContent = "";
 	header.style.backgroundColor = "rgb(175, 203, 2)";
+	activeClass.style.backgroundColor = "rgb(175, 203, 2)";
 	squares.forEach(function(square){
 		square.style.backgroundColor = rgbGenerate();
 		square.style.opacity = "1";
 	});
-	randomIndex = Math.floor(Math.random()*(6-0) + 0);
-	console.log(randomIndex);
-	var square = squares[randomIndex];
-	var color = square.style.backgroundColor;
-	console.log(color);
-	guessColor.textContent = color;
-	// isColor = false;
-	
+	guessColor.textContent = colorToGuess();
+	isColor = false;
 }
 
 
