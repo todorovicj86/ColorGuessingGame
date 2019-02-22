@@ -98,7 +98,9 @@ p.active{
 	border:1px solid black;
 	border-radius: 20px;
 }
-
+.easy{
+	display:none;
+}
 #color_1{
 	background-color: rgb(250, 0, 0);
 }
