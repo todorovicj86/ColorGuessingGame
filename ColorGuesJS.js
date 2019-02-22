@@ -1,7 +1,7 @@
 var square1= document.querySelector("#color_1");
 var squares = document.querySelectorAll(".colors");
 var guessColor = document.querySelector("#colorTitle");
-var playAgain = document.querySelector("#guess");
+var changeColor = document.querySelector("#guess");
 var header = document.querySelector("header")
 var message = document.querySelector("#message");
 var activeClass = document.querySelector(".active");
@@ -21,7 +21,7 @@ for(var i = 0; i < squares.length; i++){
 			message.textContent = "Try again!";
 			
 			if(squareColor === color){
-				playAgain.textContent = "PLAY AGAIN?";
+				changeColor.textContent = "PLAY AGAIN?";
 				message.textContent = "Correct!";
 				header.style.backgroundColor = squareColor;
 				activeClass.style.backgroundColor = squareColor;
@@ -43,12 +43,13 @@ var color = square.style.backgroundColor;
 console.log(color);
 guessColor.textContent = color;
 
-playAgain.addEventListener("click", function(){
+changeColor.addEventListener("click", function(){
 	reset();
+	isColor = false;
 });
 
 function reset(){
-	playAgain.textContent = "NEW COLOR";
+	changeColor.textContent = "NEW COLOR";
 	message.textContent = "";
 	header.style.backgroundColor = "rgb(175, 203, 2)";
 	squares.forEach(function(square){
@@ -61,7 +62,7 @@ function reset(){
 	var color = square.style.backgroundColor;
 	console.log(color);
 	guessColor.textContent = color;
-	isColor = false;
+	// isColor = false;
 	
 }
 
