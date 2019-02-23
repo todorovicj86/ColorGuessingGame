@@ -43,12 +43,9 @@ for(var i = 0; i < squares.length; i++){
 
 
 //generate the random numbers with randomNumber()
-var index = randomNumber(5,0);
+
 var num1 = randomNumber(5,0);
 var num2 = randomNumber(5,0);
-
-//it needs to be below var index
-guessColor.textContent = colorToGuess();
 
 /***** ADDING EVENT LISTENER - CLICK ********/
 
@@ -67,7 +64,32 @@ easyLevel.addEventListener("click", function(){
 	// isColor = false;
 	// isActive = false;
 });
+//when easy level, show 3 squares only, and 2 random, out of total 6
+function levelEasy(){
+	
+	if(!isActive){
+		
+		while(!(num1 !== num2 && num1 !== index && num2 !== index)){
+			num1 = randomNumber(5,0);
+			num2 = randomNumber(5,0);
+			console.log(num1, num2, index);
+		}
 
+		//adding .easy{display:none} class, to hide all 6 squares
+		squares.forEach(function(square){
+			square.classList.add("easy");
+		});
+
+		//showing only 3 (2+index) which satisfy condition
+		// (num1 !== num2 && num1 !== index && num2 !== index)
+		squares[num1].classList.remove("easy");
+		squares[num2].classList.remove("easy");
+		squares[index].classList.remove("easy");
+		
+		//setting isActive = true, to stop the function
+		isActive = true;
+	}
+}
 //add event listener to "hard level"
 hardLevel.addEventListener("click", function(){
 	this.classList.add("active");
@@ -84,6 +106,28 @@ hardLevel.addEventListener("click", function(){
 	// isColor = false;
 	// isActive = false;
 });
+
+
+/*********** FUNCTIONS ************/
+
+
+
+//when har level, show all 6 squares
+function levelHard(){
+	squares.forEach(function(square){
+		square.classList.remove("easy");
+	});
+
+}
+
+// function for random number, bewteen min and max, including the min and max
+function randomNumber(max, min){
+	var randomIndex = Math.floor(Math.random()*(max-min + 1) + min);
+	return randomIndex;
+}
+
+var index = randomNumber(5,0);
+
 
 //creat the reset when clicked on new color or try again?
 changeColor.addEventListener("click", function(){
@@ -105,58 +149,6 @@ changeColor.addEventListener("click", function(){
 });
 
 
-/*********** FUNCTIONS ************/
-
-//when easy level, show 3 squares only, and 2 random, out of total 6
-function levelEasy(){
-	
-	if(!isActive){
-		
-		while(!(num1 !== num2 && num1 !== index && num2 !== index)){
-			num1 = randomNumber(5,0);
-			num2 = randomNumber(5,0);
-		}
-
-		//adding .easy{display:none} class, to hide all 6 squares
-		squares.forEach(function(square){
-			square.classList.add("easy");
-		});
-
-		//showing only 3 (2+index) which satisfy condition
-		// (num1 !== num2 && num1 !== index && num2 !== index)
-		squares[num1].classList.remove("easy");
-		squares[num2].classList.remove("easy");
-		squares[index].classList.remove("easy");
-		
-		//setting isActive = true, to stop the function
-		isActive = true;
-	}
-}
-
-//when har level, show all 6 squares
-function levelHard(){
-	squares.forEach(function(square){
-		square.classList.remove("easy");
-	});
-
-}
-
-// function for random number, bewteen min and max, including the min and max
-function randomNumber(max, min){
-	var randomIndex = Math.floor(Math.random()*(max-min + 1) + min);
-	return randomIndex;
-}
-
-
-//function to chose random square's color
-function colorToGuess(){
-	var color = squares[index].style.backgroundColor;
-	console.log(index, color);
-	return color;
-}
-
-//mathching the text and the color
-guessColor.textContent = colorToGuess();
 
 //reset function
 function reset(){
@@ -179,12 +171,22 @@ function reset(){
     num2 = randomNumber(5,0);
 
 	//set the text to color rgb
-	// guessColor.textContent = colorToGuess();
+	guessColor.textContent = colorToGuess();
 
 	//set boolean variables to false
 	isColor = false;
 	isActive = false;
 }
+
+//function to chose random square's color
+function colorToGuess(){
+	index;
+	var color = squares[index].style.backgroundColor;
+	console.log(index, color);
+	return color;
+}
+//mathching the text and the color
+guessColor.textContent = colorToGuess();
 
 
 //generating the random color-rgb code
@@ -197,3 +199,4 @@ function rgbGenerate(){
 	}
 	return rgb = "rgb(" + rgb[0] +" ," +rgb[1]+" ," + rgb[2] + ")";
 }
+
