@@ -41,8 +41,6 @@ for(var i = 0; i < squares.length; i++){
 	});
 };
 
-//mathching the text and the color
-guessColor.textContent = colorToGuess();
 
 //generate the random numbers with randomNumber()
 var index = randomNumber(5,0);
@@ -155,6 +153,8 @@ function colorToGuess(){
 	return color;
 }
 
+//mathching the text and the color
+guessColor.textContent = colorToGuess();
 
 //reset function
 function reset(){
