@@ -47,6 +47,8 @@ var index = randomNumber(5,0);
 var num1 = randomNumber(5,0);
 var num2 = randomNumber(5,0);
 
+//it needs to be below var index
+guessColor.textContent = colorToGuess();
 
 /***** ADDING EVENT LISTENER - CLICK ********/
 
@@ -177,7 +179,7 @@ function reset(){
     num2 = randomNumber(5,0);
 
 	//set the text to color rgb
-	guessColor.textContent = colorToGuess();
+	// guessColor.textContent = colorToGuess();
 
 	//set boolean variables to false
 	isColor = false;
