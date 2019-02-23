@@ -10,31 +10,42 @@ var hardLevel = document.querySelector("#hard");
 var isColor = false;
 var isActive = false;
 
-
+//loop through all the squares to find the requested color
 for(var i = 0; i < squares.length; i++){
 	
+	//add random colors to squares
 	squares[i].style.backgroundColor= rgbGenerate();
 	
+	//add even listener to squares
 	squares[i].addEventListener("click",function(){
- 	
+ 		//searching for a mac
  	 	var squareColor = this.style.backgroundColor;
 		
+		//if color of clicked square is not the correct one, isColor=false (!isColor) is true
 		if(!isColor){
+			
+			//make the squares invisible
 			this.style.opacity = "0";
+			
+			//set the message to tyr again
 			message.textContent = "Try again!";
 			
+			//if the color is correct one
 			if(squareColor === guessColor.textContent){
 
+				//change the text
 				changeColor.textContent = "PLAY AGAIN?";
 				message.textContent = "Correct!";
+				
+				//set the background color of a header to correct color
 				header.style.backgroundColor = squareColor;
-				// activeClass.style.backgroundColor = squareColor;
 
+				//set the color of all squares to correct color and opacity to 1
 				squares.forEach(function(square){
 					square.style.backgroundColor = squareColor;
 					square.style.opacity = "1";
 				});
-
+				//boolean is true, quit the game
 				isColor = true;
 			}
 		}
@@ -43,11 +54,8 @@ for(var i = 0; i < squares.length; i++){
 
 
 //generate the random numbers with randomNumber()
-
 var num1 = randomNumber(5,0);
 var num2 = randomNumber(5,0);
-
-/***** ADDING EVENT LISTENER - CLICK ********/
 
 //add event listener to "easy level"
 easyLevel.addEventListener("click", function(){
@@ -58,17 +66,16 @@ easyLevel.addEventListener("click", function(){
 
 	/*if not reste(), these functions below should be added, to enable
 	switch toggle easy/hard*/
-
 	// rgbGenerate();
 	// colorToGuess();
 	// isColor = false;
 	// isActive = false;
 });
+
 //when easy level, show 3 squares only, and 2 random, out of total 6
 function levelEasy(){
 	
 	if(!isActive){
-		
 		while(!(num1 !== num2 && num1 !== index && num2 !== index)){
 			num1 = randomNumber(5,0);
 			num2 = randomNumber(5,0);
@@ -100,7 +107,6 @@ hardLevel.addEventListener("click", function(){
 
 	/*if not reste(), these functions below should be added, to enable
 	switch toggle easy/hard*/
-	
 	// rgbGenerate();
 	// colorToGuess();
 	// isColor = false;
@@ -108,16 +114,11 @@ hardLevel.addEventListener("click", function(){
 });
 
 
-/*********** FUNCTIONS ************/
-
-
-
 //when har level, show all 6 squares
 function levelHard(){
 	squares.forEach(function(square){
 		square.classList.remove("easy");
 	});
-
 }
 
 // function for random number, bewteen min and max, including the min and max
@@ -127,7 +128,6 @@ function randomNumber(max, min){
 }
 
 var index = randomNumber(5,0);
-
 
 //creat the reset when clicked on new color or try again?
 changeColor.addEventListener("click", function(){
@@ -145,10 +145,7 @@ changeColor.addEventListener("click", function(){
 		easyLevel.classList.remove("active");
 		levelHard();
 	}
-	
 });
-
-
 
 //reset function
 function reset(){
@@ -187,7 +184,6 @@ function colorToGuess(){
 }
 //mathching the text and the color
 guessColor.textContent = colorToGuess();
-
 
 //generating the random color-rgb code
 function rgbGenerate(){
