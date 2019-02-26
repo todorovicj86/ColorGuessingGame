@@ -12,34 +12,37 @@ body{
 }
 header, main{
 	margin:0;
-	padding:0;
 	width:100%;
 }
+
 header{
 	background-color: rgb(175, 203, 2);
-	height:200px;
-}
-main{
-	display: flex;
+	padding:1.66% 0;
+
 }
 
 .container{
 	margin:0 auto;
-	width:1000px;
+	max-width:900px;
 	height:100%;
 	text-align: center;
 }
 
 h1{
-	font-size:4rem;
+	font-size:400%;
 }
-h2{
-	font-size:2rem;
+
+.spanTitle{
+	display:block;
+	font-size:200%;
 }
-h1, h2 {
+h1, .spanTitle {
 	margin-top:0;
-	margin-bottom:0.1rem;
+	margin-bottom:1%;
 	color: rgb(250, 250, 250);
+	text-transform: uppercase;
+	text-align: center;
+	line-height: 1.1;
 }
 
 #title_1{
@@ -50,49 +53,59 @@ h1, h2 {
 #menu{
 	margin:0
 	padding:0;
-	width:100%;
+	/*width:100%;*/
 	height:30px;
 	background-color: rgb(250, 250, 250);
+	text-align: center;
 }
 #guess{
-	width:50%;
 	text-align: left;
-	/*margin-left:10px;*/
 }
 
 #message{
-	width:100%;
+	width:35%;
 	font-weight: normal;
+	display: inline-block;
+	margin:0;
+	padding:0;
 }
-.level{
-	width:30%;
-	float:right;
-	text-align: center;
+
+button{
+	border: none;
+	background: none;
+	text-transform: uppercase;
+	height: 100%;
+	font-weight: 700;
+	color: steelblue;
+	letter-spacing: 1px;
+	font-size: inherit;
+	transition: all 0.3s;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	outline: none;
+}
+
+button:hover {
+	color: white;
+	background: rgb(175, 203, 2);
 }
 .active {
 	background-color: rgb(175, 203, 2);
 	color: rgb(250, 250, 250);
 }
-.column{
-	float: left;
-	margin: 0 1.66%;
-	width: 30%;
-}
-.column p{
-	margin:0;
-	padding-top:1.6%;
-	height:100%;
-	color: rgb(80, 140, 243);
-}
-.column:hover{
-	cursor: pointer;
-}
+
 .colors{
-	margin-top:1.66%;
-	margin-bottom:1.66%;
+	float:left;
+	margin:1.66%;
+	width:30%;
 	padding-bottom: 30%;
-	border:1px solid black;
 	border-radius: 20px;
+	transition: background 0.6s;
+	-webkit-transition: background 0.6s;
+	-moz-transition: background 0.6s;
+}
+.colors:hover{
+	cursor: pointer;
 }
 .easy{
 	display:none;
