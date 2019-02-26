@@ -25,7 +25,8 @@ for(var i = 0; i < squares.length; i++){
 		if(!isColor){
 			
 			//make the squares invisible
-			this.style.opacity = "0";
+			// this.style.opacity = "0";
+			this.style.backgroundColor = "rgb(50, 50, 50)";
 			
 			//set the message to tyr again
 			message.textContent = "Try again!";
@@ -43,7 +44,7 @@ for(var i = 0; i < squares.length; i++){
 				//set the color of all squares to correct color and opacity to 1
 				squares.forEach(function(square){
 					square.style.backgroundColor = squareColor;
-					square.style.opacity = "1";
+					// square.style.opacity = "1";
 				});
 				//boolean is true, quit the game
 				isColor = true;
