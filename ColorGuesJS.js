@@ -64,13 +64,6 @@ easyLevel.addEventListener("click", function(){
 	hardLevel.classList.remove("active");
 	reset();
 	levelEasy();
-
-	/*if not reste(), these functions below should be added, to enable
-	switch toggle easy/hard*/
-	// rgbGenerate();
-	// colorToGuess();
-	// isColor = false;
-	// isActive = false;
 });
 
 //when easy level, show 3 squares only, and 2 random, out of total 6
@@ -80,7 +73,6 @@ function levelEasy(){
 		while(!(num1 !== num2 && num1 !== index && num2 !== index)){
 			num1 = randomNumber(5,0);
 			num2 = randomNumber(5,0);
-			console.log(num1, num2, index);
 		}
 
 		//adding .easy{display:none} class, to hide all 6 squares
@@ -102,16 +94,8 @@ function levelEasy(){
 hardLevel.addEventListener("click", function(){
 	this.classList.add("active");
 	easyLevel.classList.remove("active");
-	// easyLevel.style.backgroundColor = "white";
 	reset();
 	levelHard();
-
-	/*if not reste(), these functions below should be added, to enable
-	switch toggle easy/hard*/
-	// rgbGenerate();
-	// colorToGuess();
-	// isColor = false;
-	// isActive = false;
 });
 
 
@@ -180,7 +164,6 @@ function reset(){
 function colorToGuess(){
 	index;
 	var color = squares[index].style.backgroundColor;
-	console.log(index, color);
 	return color;
 }
 //mathching the text and the color
